@@ -21,9 +21,9 @@ export default function App() {
       <button id="button" type="button" onClick={handleClick}>
         Submit
       </button>
-      <ol>
+      <ol id='list'>
         {taskList.map((val) => (
-          <li key={val.index}>{val}</li>
+          <li className="list-item" key={val.index}>{val}</li>
         ))}
       </ol>
     </div>
