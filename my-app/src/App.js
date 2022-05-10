@@ -23,7 +23,11 @@ export default function App() {
       </button>
       <ol id='list'>
         {taskList.map((val) => (
-          <li className="list-item" key={val.index}>{val}</li>
+          <div className="list-item">
+          <li  key={val.index}>{val}
+          </li>
+            <button>X</button>
+            </div>
         ))}
       </ol>
     </div>
