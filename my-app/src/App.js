@@ -8,7 +8,14 @@ export default function App() {
   const handleClick = () => {
     const items = [...taskList, task];
     setTaskList(items);
+    console.log(taskList)
   };
+
+  const deleteItem = (index) => {
+    const filteredTasks = taskList.filter((item, i)=> i !== index) 
+    setTaskList(filteredTasks)
+   
+  }
 
   return (
     <div className="App">
@@ -22,11 +29,11 @@ export default function App() {
         Submit
       </button>
       <ol id='list'>
-        {taskList.map((val) => (
+        {taskList.map((val, i) => (
           <div className="list-item">
-          <li  key={val.index}>{val}
+          <li index={i} key={Math.floor(Math.random() * 100)}>{val}
           </li>
-            <button>X</button>
+          <button onClick={()=>deleteItem(i)}>X</button>
             </div>
         ))}
       </ol>
