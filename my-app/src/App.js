@@ -4,6 +4,7 @@ import "./index.css";
 export default function App() {
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState([]);
+  const [completed, setCompleted] = useState(false);
 
   const handleClick = () => {
     const items = [...taskList, task];
@@ -31,8 +32,9 @@ export default function App() {
       <ol id='list'>
         {taskList.map((val, i) => (
           <div className="list-item">
-          <li index={i} key={Math.floor(Math.random() * 100)}>{val}
+          <li  index={i} key={Math.floor(Math.random() * 100)}>{val}
           </li>
+          <input id="checbox" type='checkbox' onClick={setCompleted(!completed)}/>
           <button onClick={()=>deleteItem(i)}>X</button>
             </div>
         ))}
