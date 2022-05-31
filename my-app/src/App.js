@@ -5,41 +5,43 @@ import TodoList from "./components/TodoList";
 
 export default function App() {
   const [inputText, setInputText] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [status, setStatus] = useState("all");
-  const [filteredTodos, setFilteredTodos] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([]);
 
   useEffect(() => {
     filterHandler();
-  }, [todos, status]);
+  }, [tasks, status]);
 
   const filterHandler = () => {
     switch (status) {
       case "completed":
-        setFilteredTodos(todos.filter((todo) => todo.completed === true));
+       setFilteredTasks(tasks.filter((task) => task.completed === true));
         break;
       case "uncompleted":
-        setFilteredTodos(todos.filter((todo) => todo.completed === false));
+       setFilteredTasks(tasks.filter((task) => task.completed === false));
         break;
       default:
-        setFilteredTodos(todos);
+       setFilteredTasks(tasks);
         break;
     }
   };
 
   return (
     <div className="App">
+      <h1 className="title">TASKER</h1>
+
       <Form
-        todos={todos}
-        setTodos={setTodos}
+        tasks={tasks}
+        setTasks={setTasks}
         setInputText={setInputText}
         inputText={inputText}
         setStatus={setStatus}
       />
       <TodoList
-        todos={todos}
-        setTodos={setTodos}
-        filteredTodos={filteredTodos}
+        tasks={tasks}
+        setTasks={setTasks}
+      filteredTasks={filteredTasks}
       />
     </div>
   );
